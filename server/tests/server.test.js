@@ -38,6 +38,7 @@ describe('POST /todos', () => {
         if(err){
           return done(err)
         }
+        
         Todo.find().then( (todos) => {
           expect(todos.length).toBe(0);
           done();
