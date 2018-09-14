@@ -66,7 +66,7 @@ app.delete('/todos/:id', (req, res) => {
 app.patch('/todos/:id', (req, res) => {
   var id = req.params.id;
   var body = _.pick(req.body, ['text', 'completed']);
-  
+  // console.log(req.body);
   if( ! ObjectID.isValid(id)){
     return res.status(404).send();
   }
@@ -82,11 +82,13 @@ app.patch('/todos/:id', (req, res) => {
     if(!todo){
       return res.status(404).send();
     }
+    // console.log(todo);
     res.send({todo});
   }).catch((e) => {
     res.status(400).send();
   })
 });
+
 app.listen(port, () => {
   console.log(`Started on port ${port}`)
 });
